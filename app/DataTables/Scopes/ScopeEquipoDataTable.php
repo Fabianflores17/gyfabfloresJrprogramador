@@ -9,16 +9,20 @@ class ScopeEquipoDataTable implements DataTableScope
 
 
   public $tipo_id;
+  public  $marca_id;
   public  $numero_serie;
   public  $imei;
   public  $observaciones;
 
+
   public function __construct()
   {
       $this->tipo_id = request()->tipo_id ?? null;
+      $this->marca_id = request()->marca_id ?? null;
       $this->numero_serie = request()->numero_serie ?? null;
       $this->imei = request()->imei ?? null;
       $this->observaciones = request()->observaciones ?? null;
+
 
   }
     /**
@@ -29,6 +33,8 @@ class ScopeEquipoDataTable implements DataTableScope
      */
     public function apply($query)
     {
+
+
         if (!is_null($this->tipo_id)){
             if (is_array($this->tipo_id)){
                 $query->whereIn('tipo_id',$this->tipo_id);
@@ -36,6 +42,15 @@ class ScopeEquipoDataTable implements DataTableScope
                 $query->where('tipo_id',$this->tipo_id);
             }
         }
+        if (!is_null($this->marca_id)){
+            if (is_array($this->marca_id)){
+                $query->whereIn('marca_id',$this->marca_id);
+            }else{
+                $query->where('marca_id',$this->marca_id);
+            }
+
+        }
+
         if (!is_null($this->numero_serie)){
             if (is_array($this->numero_serie)){
                 $query->whereIn('numero_serie',$this->numero_serie);
@@ -58,6 +73,8 @@ class ScopeEquipoDataTable implements DataTableScope
             }else{
                 $query->where('observaciones',$this->observaciones);
             }
+
+
         // return $query->where('id', 1);
     }
 }

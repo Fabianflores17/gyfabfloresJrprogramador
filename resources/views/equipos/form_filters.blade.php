@@ -9,14 +9,22 @@
                 <div class="card-body">
                     <div class="form-row">
 
-                        <div class="row">
+                        <div class="row" id="root">
                            <!-- Tipo Equipo Id Field -->
-                            <div class="form-group col-sm-4" id="root">
+                            <div class="form-group col-sm-4" >
                                 <label for="tipoequipo">Tipo </label>
                                 <multiselect v-model="tipoequipo" :options="tipoequipos" track-by="id" label="nombre" :multiple="true" placeholder="Selecciones uno" >
                                 </multiselect>
                                 <input type="hidden" name="tipo_id[]" id="tipo_id" :value="item.id" v-for="item in tipoequipo">
                                 {{-- <input type="hidden" name="tipo_id" id="tipo_id" :value="tipoId"> --}}
+                            </div>
+
+
+                            <div class="form-group col-sm-4" >
+                                <label for="marca">Marca </label>
+                                <multiselect v-model="marca" :options="marcas" track-by="id" label="nombre" :multiple="true" placeholder="Selecciones uno" >
+                                </multiselect>
+                                <input type="hidden" name="marca_id[]" id="marca_id" :value="item.id" v-for="item in marca">
                             </div>
 
                             <!-- Numero Serie Field -->
@@ -31,11 +39,6 @@
                                 {!! Form::text('imei', null, ['class' => 'form-control', 'maxlength' => 255, 'maxlength' => 255, 'maxlength' => 255]) !!}
                             </div>
 
-                            <!-- Observaciones Field -->
-                            <div class="form-group col-sm-12 col-lg-12">
-                                {!! Form::label('observaciones', 'Observaciones:') !!}
-                                {!! Form::textarea('observaciones', null, ['class' => 'form-control', 'rows' => 2,'maxlength' => 65535, 'maxlength' => 65535, 'maxlength' => 65535]) !!}
-                            </div>
 
 
                             <div class="form-group col-sm-4">
@@ -62,61 +65,81 @@
 @push('scripts')
 
     <script>
-         $(function () {
+        $(function () {
 
-$("input[name='q']").hide();
+            $("input[name='q']").hide();
 
-});
+        });
 
-const app = new Vue({
-name:'app',
-el: '#root',
-created() {
+        const app = new Vue({
+            name: 'app',
+            el: '#root',
+            created() {
 
-this.tipoId;
-this.tipoName;
+                this.tipoId;
+                this.tipoName;
+                this.marcaId;
+                this.marcaName;
 
-},
-
-
-data: {
-
-tipoequipos: @json(\App\Models\TipoEquipo::all() ?? []),
-tipoequipo: null,
+            },
 
 
-},
+            data: {
 
-computed: {
-
-tipoId() {
-if (this.tipoequipo) {
-return this.tipoequipo.id;
-    }
-return null;
-
-  },
-
-tipoName(){
-
-if (this.tipoequipo){
-return this.tipoequipo.nombre;
-
-  }
-  return null
-
-},
-
-}
+                tipoequipos: @json(\App\Models\TipoEquipo::all() ?? []),
+                tipoequipo: null,
 
 
+                marcas: @json(\App\Models\EquipoMarca::all() ?? []),
+                marca: null,
 
 
-});
+            },
+
+            computed: {
+
+                tipoId() {
+                    if (this.tipoequipo) {
+                        return this.tipoequipo.id;
+                    }
+                    return null;
+
+                },
+
+                tipoName() {
+
+                    if (this.tipoequipo) {
+                        return this.tipoequipo.nombre;
+
+                    }
+                    return null
+
+                },
+                marcaId() {
+                    if (this.marca) {
+                        return this.marca.id;
+                    }
+                    return null;
+
+                },
+                marcaName() {
+
+                    if (this.marca) {
+                        return this.marca.nombre;
+
+                    }
+                    return null
+
+                },
+
+            }
+
+
+        });
         $(function () {
 
 
-            $('#formFiltersDatatables').submit(function(e){
+            $('#formFiltersDatatables').submit(function (e) {
 
                 e.preventDefault();
                 logI('envio filtros ajax');

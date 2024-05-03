@@ -2,12 +2,12 @@
 
 namespace App\DataTables;
 
-use App\Models\Cliente;
+use App\Models\EquipoMarca;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Services\DataTable;
 
-class ClienteDataTable extends DataTable
+class EquipoMarcaDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -20,13 +20,13 @@ class ClienteDataTable extends DataTable
 
         return datatables()
             ->eloquent($query)
-            ->addColumn('action', function(Cliente $cliente){
-                $id = $cliente->id;
-                return view('clientes.datatables_actions',compact('cliente','id'));
+            ->addColumn('action', function(EquipoMarca $equipoMarca){
+                $id = $equipoMarca->id;
+                return view('equipo_marcas.datatables_actions',compact('equipoMarca','id'));
             })
-            ->editColumn('id',function (Cliente $cliente){
+            ->editColumn('id',function (EquipoMarca $equipoMarca){
 
-                return $cliente->id;
+                return $equipoMarca->id;
 
             })
             ->rawColumns(['action']);
@@ -35,10 +35,10 @@ class ClienteDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Cliente $model
+     * @param \App\Models\EquipoMarca $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Cliente $model)
+    public function query(EquipoMarca $model)
     {
         return $model->newQuery()->select($model->getTable().'.*');
     }
@@ -54,13 +54,13 @@ class ClienteDataTable extends DataTable
                 ->columns($this->getColumns())
                 ->minifiedAjax()
                 ->ajax([
-                    'data' => "function(data) { formatDataDataTables($('#formFiltersDatatables').serializeArray(), data);   }"
+                'data' => "function(data) { formatDataDataTables($('#formFiltersDatatables').serializeArray(), data);   }"
                 ])
                 ->info(true)
                 ->language(['url' => asset('js/SpanishDataTables.json')])
                 ->responsive(true)
                 ->stateSave(false)
-
+                ->orderBy(1,'desc')
                 ->dom('
                     <"row mb-2"
                     <"col-sm-12 col-md-6" B>
@@ -107,12 +107,7 @@ class ClienteDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('nombres'),
-            Column::make('apellidos'),
-            Column::make('dpi'),
-            Column::make('telefono'),
-            Column::make('direccion'),
-            Column::make('correo'),
+            Column::make('nombre'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
@@ -128,6 +123,6 @@ class ClienteDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'clientes_datatable_' . time();
+        return 'equipo_marcas_datatable_' . time();
     }
 }

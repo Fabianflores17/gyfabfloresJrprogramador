@@ -52,6 +52,7 @@ class EquipoDataTable extends DataTable
     {
         return $model->newQuery()->select($model->getTable().'.*')
         ->with(['tipo:id,nombre'])
+        ->with(['marca:id,nombre'])
         ->with(['media']);
         // ->whereIn('tipo_id',function ($q){
         //     $q->select('id')->from('soporte_equipo_tipos')->whereNull('deleted_at');
@@ -76,7 +77,6 @@ class EquipoDataTable extends DataTable
                 ->language(['url' => asset('js/SpanishDataTables.json')])
                 ->responsive(true)
                 ->stateSave(false)
-                ->orderBy(1,'desc')
                 ->dom('
                     <"row mb-2"
                     <"col-sm-12 col-md-6" B>
@@ -123,11 +123,12 @@ class EquipoDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('tipo.nombre'),
+            Column::make('tipo.nombre')->searchable(true)->orderable(true)->title('Tipo'),
+            Column::make('marca.nombre')->searchable(true)->orderable(true)->title('Marca'),
             Column::make('numero_serie'),
             Column::make('imei'),
             Column::make('observaciones'),
-            Column::make('fotoEquipo'),
+            Column::make('fotoEquipo')->orderable(false)->searchable(false)->printable(false)->exportable(false),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

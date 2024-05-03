@@ -63,6 +63,7 @@ class OptionAPIController extends AppBaseController
      */
     public function store(CreateOptionAPIRequest $request)
     {
+
         $input = $request->all();
 
         /** @var Option $option */

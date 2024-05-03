@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('titulo_pagina', 'Equipos')
 @section('titulo_pagina', 'Editar Equipo' )
 
 @section('content')
@@ -40,9 +41,9 @@
                     {!! Form::model($equipo, ['route' => ['equipos.update', $equipo->id],"enctype"=>"multipart/form-data", 'method' => 'patch','class' => 'esperar']) !!}
 
                     <div class="card-body">
-                        <div class="row">
+
                             @include('equipos.fields')
-                        </div>
+
                     </div>
 
                     <div class="card-footer text-end">

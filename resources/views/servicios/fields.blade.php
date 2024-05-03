@@ -11,7 +11,7 @@
 
 <div class="form-group col-sm-6">
     <label for="tipocliente">Cliente </label>
-    <multiselect v-model="tipocliente" :options="tipoclientes" label="nombres" placeholder="Selecciones uno">
+    <multiselect v-model="tipocliente" :options="tipoclientes" label="nombre_completo" placeholder="Selecciones uno">
     </multiselect>
     <input type="hidden" name="cliente_id" id="cliente_id" :value="clienteID">
 
@@ -21,8 +21,8 @@
 
 
 <div class="form-group col-sm-6">
-    <label for="equipo">numero Serie </label>
-    <multiselect v-model="equipo" :options="equipos" label="numero_serie" placeholder="Selecciones uno">
+    <label for="equipo">Equipo</label>
+    <multiselect v-model="equipo" :options="equipos" label="datos_equipo" placeholder="Selecciones uno">
     </multiselect>
     <input type="hidden" name="equipo_id" id="equipo_id" :value="equipoID">
 
@@ -34,44 +34,44 @@
     {!! Form::textarea('problema', null, ['class' => 'form-control','rows' => 2, 'required']) !!}
 </div>
 
-<!-- Solucion Field -->
-<div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('solucion', 'Solucion:') !!}
-    {!! Form::textarea('solucion', null, ['class' => 'form-control','rows' => 2]) !!}
-</div>
+{{--<!-- Solucion Field -->--}}
+{{--<div class="form-group col-sm-12 col-lg-12">--}}
+{{--    {!! Form::label('solucion', 'Solucion:') !!}--}}
+{{--    {!! Form::textarea('solucion', null, ['class' => 'form-control','rows' => 2]) !!}--}}
+{{--</div>--}}
 
-<!-- Recomendaciones Field -->
-<div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('recomendaciones', 'Recomendaciones:') !!}
-    {!! Form::textarea('recomendaciones', null, ['class' => 'form-control','rows' => 2]) !!}
-</div>
+{{--<!-- Recomendaciones Field -->--}}
+{{--<div class="form-group col-sm-12 col-lg-12">--}}
+{{--    {!! Form::label('recomendaciones', 'Recomendaciones:') !!}--}}
+{{--    {!! Form::textarea('recomendaciones', null, ['class' => 'form-control','rows' => 2]) !!}--}}
+{{--</div>--}}
 
-<!-- Fecha Recibido Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('fecha_recibido', 'Fecha Recibido:') !!}
-    {!! Form::Date('fecha_recibido', $servicio->fecha_recibido ?? null, ['class' => 'form-control','id'=>'fecha_recibido']) !!}
-</div>
-
-
-<!-- Fecha Inicio Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('fecha_inicio', 'Fecha Inicio:') !!}
-    {!! Form::Date('fecha_inicio', $servicio->fecha_inicio ?? null, ['class' => 'form-control','id'=>'fecha_inicio']) !!}
-</div>
+{{--<!-- Fecha Recibido Field -->--}}
+{{--<div class="form-group col-sm-6">--}}
+{{--    {!! Form::label('fecha_recibido', 'Fecha Recibido:') !!}--}}
+{{--    {!! Form::Date('fecha_recibido', $servicio->fecha_recibido ?? null, ['class' => 'form-control','id'=>'fecha_recibido']) !!}--}}
+{{--</div>--}}
 
 
-<!-- Fecha Fin Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('fecha_fin', 'Fecha Fin:') !!}
-    {!! Form::Date('fecha_fin',$servicio->fecha_fin ?? null ,['class' => 'form-control','id'=>'fecha_fin']) !!}
-</div>
+{{--<!-- Fecha Inicio Field -->--}}
+{{--<div class="form-group col-sm-6">--}}
+{{--    {!! Form::label('fecha_inicio', 'Fecha Inicio:') !!}--}}
+{{--    {!! Form::Date('fecha_inicio', $servicio->fecha_inicio ?? null, ['class' => 'form-control','id'=>'fecha_inicio']) !!}--}}
+{{--</div>--}}
 
 
-<!-- Fecha Entrega Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('fecha_entrega', 'Fecha Entrega:') !!}
-    {!! Form::Date('fecha_entrega',$servicio->fecha_entrega ?? null, ['class' => 'form-control','id'=>'fecha_entrega']) !!}
-</div>
+{{--<!-- Fecha Fin Field -->--}}
+{{--<div class="form-group col-sm-6">--}}
+{{--    {!! Form::label('fecha_fin', 'Fecha Fin:') !!}--}}
+{{--    {!! Form::Date('fecha_fin',$servicio->fecha_fin ?? null ,['class' => 'form-control','id'=>'fecha_fin']) !!}--}}
+{{--</div>--}}
+
+
+{{--<!-- Fecha Entrega Field -->--}}
+{{--<div class="form-group col-sm-6">--}}
+{{--    {!! Form::label('fecha_entrega', 'Fecha Entrega:') !!}--}}
+{{--    {!! Form::Date('fecha_entrega',$servicio->fecha_entrega ?? null, ['class' => 'form-control','id'=>'fecha_entrega']) !!}--}}
+{{--</div>--}}
 
 @push('scripts')
 

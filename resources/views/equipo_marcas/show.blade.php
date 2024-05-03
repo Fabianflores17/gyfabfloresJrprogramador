@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
-
-@section('titulo_pagina', 'Equipo')
+@section('titulo_pagina', 'Equipo Marca')
 
 @section('content')
 
@@ -10,7 +9,7 @@
             <div class="row breadcrumbs-top">
                 <div class="col-12">
                     <h2 class="content-header-title float-start mb-0">
-                                                    Equipo detalle
+                                                    Equipo Marca detalle
                                             </h2>
                 </div>
             </div>
@@ -37,7 +36,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            @include('equipos.show_fields')
+                            @include('equipo_marcas.show_fields')
                         </div>
                     </div>
                 </div>

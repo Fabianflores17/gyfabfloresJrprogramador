@@ -24,7 +24,8 @@ class Servicio extends Model
         'fecha_recibido',
         'fecha_inicio',
         'fecha_fin',
-        'fecha_entrega'
+        'fecha_entrega',
+        'estado_id'
     ];
 
     protected $casts = [
@@ -41,10 +42,10 @@ class Servicio extends Model
         'usuario_id' => 'required',
         'cliente_id' => 'required',
         'equipo_id' => 'required',
-        'problema' => 'required|string|max:65535',
-        'solucion' => 'required|string|max:65535',
+        'problema' => 'nullable|string|max:65535',
+        'solucion' => 'nullable|string|max:65535',
         'recomendaciones' => 'nullable|string|max:65535',
-        'fecha_recibido' => 'required',
+        'fecha_recibido' => 'nullable',
         'fecha_inicio' => 'nullable',
         'fecha_fin' => 'nullable',
         'fecha_entrega' => 'nullable',
@@ -70,5 +71,11 @@ class Servicio extends Model
     public function usuario(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(\App\Models\User::class, 'usuario_id');
+    }
+
+    //ESTADO
+    public function estado(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(\App\Models\ServicioEstado::class, 'estado_id');
     }
 }

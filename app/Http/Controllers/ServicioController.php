@@ -8,6 +8,8 @@ use App\Http\Requests\CreateServicioRequest;
 use App\Http\Requests\UpdateServicioRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Models\Servicio;
+use App\Models\ServicioEstado;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ServicioController extends AppBaseController
@@ -46,6 +48,13 @@ class ServicioController extends AppBaseController
      */
     public function store(CreateServicioRequest $request)
     {
+
+        //MERGE
+        $request->merge([
+            'fecha_recibido' => Carbon::Now(),
+            'estado_id' => ServicioEstado::INGRESADO
+        ]);
+
         $input = $request->all();
 
         /** @var Servicio $servicio */

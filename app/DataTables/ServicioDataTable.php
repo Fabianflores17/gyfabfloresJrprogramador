@@ -61,22 +61,7 @@ class ServicioDataTable extends DataTable
     {
        // return $model->newQuery()->select($model->getTable().'.*');
        return $model->newQuery()->select($model->getTable().'.*')
-       ->with(['usuario'])
-       ->with(['cliente'])
-       ->with(['equipo'])
-       ->with(['equipo.tipo'])
-    //    ->whereIn('equipo_id',function ($q){
-        // $q->select('id')->from('soporte_equipos')->whereNull('deleted_at');
-        // })
-
-        // ->whereIn('cliente_id',function ($q){
-        // $q->select('id')->from('soporte_clientes')->whereNull('deleted_at');
-        // })
-
-        // ->whereIn('usuario_id',function ($q){
-        // $q->select('id')->from('users')->whereNull('deleted_at');
-        // })
-       ;
+       ->with(['usuario','cliente','equipo','equipo.tipo','estado']);
     }
 
     /**
@@ -144,26 +129,26 @@ class ServicioDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('usuario.name'),
+            Column::make('usuario.name')->title('Técnico'),
             //Column::make('cliente.nombres'), se mostraba nombre y apellid junto
             Column::make('nombres')
-            ->data('cliente.nombres')
+            ->data('cliente.nombre_completo')
             ->name('cliente.nombres')
-            ->visible(true),
+            ->visible(true)->title('Cliente'),
 
             Column::make('apellidos')
             ->data('cliente.apellidos')//el attributo del objeto
             ->name('cliente.apellidos')//donde busca
-            ->visible(true),
-            Column::make('equipo.numero_serie'),
-            Column::make('equipo.tipo.nombre'),
+            ->visible(false),
+            Column::make('equipo.datos_equipo')->title('Equipo'),
             Column::make('problema'),
-            Column::make('solucion'),
-            Column::make('recomendaciones'),
-            Column::make('fecha_recibido'),
-            Column::make('fecha_inicio'),
-            Column::make('fecha_fin'),
-            Column::make('fecha_entrega'),
+            column::make('estado.nombre'),
+//            Column::make('solucion'),
+//            Column::make('recomendaciones'),
+//            Column::make('fecha_recibido'),
+//            Column::make('fecha_inicio'),
+//            Column::make('fecha_fin'),
+//            Column::make('fecha_entrega'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

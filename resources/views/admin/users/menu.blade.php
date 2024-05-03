@@ -42,7 +42,7 @@
                                     <div class="form-group col-sm-12">
 
                                         <input type="hidden" name="options" id="options">
-                                        <button type="button" id="#btnSave"  class="btn btn-outline-success">Guardar</button>
+                                        <button  type="submit" id="#btnSave"  class="btn btn-outline-success">Guardar</button>
                                         <a href="{!! route('users.index') !!}" class="btn btn-outline-secondary">Cancelar</a>
                                     </div>
 

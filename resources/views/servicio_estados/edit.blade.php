@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
-
-@section('titulo_pagina', 'Equipo')
+@section('titulo_pagina', 'Editar Servicio Estado' )
 
 @section('content')
 
@@ -10,7 +9,7 @@
             <div class="row breadcrumbs-top">
                 <div class="col-12">
                     <h2 class="content-header-title float-start mb-0">
-                                                    Equipo detalle
+                                                    Editar Servicio Estado
                                             </h2>
                 </div>
             </div>
@@ -19,7 +18,7 @@
             <div class="mb-1 breadcrumb-right">
                 <div class="dropdown">
                     <a class="btn btn-outline-secondary float-right"
-                       href="{{ url()->previous() }}"
+                       href="{{ route('servicioEstados.index') }}"
                     >
                         <i class="fa fa-arrow-left"></i>
                         Regresar
@@ -29,19 +28,44 @@
         </div>
     </div>
 
-
     <div class="content-body">
 
         <div class="row">
             <div class="col-12">
+
+                @include('layouts.partials.request_errors')
+
                 <div class="card">
+
+                    {!! Form::model($servicioEstado, ['route' => ['servicioEstados.update', $servicioEstado->id], 'method' => 'patch','class' => 'esperar']) !!}
+
                     <div class="card-body">
                         <div class="row">
-                            @include('equipos.show_fields')
+                            @include('servicio_estados.fields')
                         </div>
                     </div>
+
+                    <div class="card-footer text-end">
+
+                        <a href="{{ route('servicioEstados.index') }}"
+                           class="btn btn-outline-secondary round me-1">
+                            <i class="fa fa-ban"></i>
+                            Cancelar
+                        </a>
+
+                        <button type="submit" class="btn btn-success round">
+                            <i class="fa fa-save"></i>
+                            Guardar
+                        </button>
+                    </div>
+
+                    {!! Form::close() !!}
+
+
                 </div>
             </div>
         </div>
+
     </div>
+
 @endsection

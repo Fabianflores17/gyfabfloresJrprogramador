@@ -23,6 +23,7 @@ class Equipo extends Model implements HasMedia
 
     public $fillable = [
         'tipo_id',
+        'marca_id',
         'numero_serie',
         'imei',
         'observaciones'
@@ -52,6 +53,10 @@ class Equipo extends Model implements HasMedia
 
     ];
 
+    //Atributo datos equipo
+    protected $appends = ['datos_equipo'];
+
+
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')
@@ -64,6 +69,10 @@ class Equipo extends Model implements HasMedia
         $media = $this->getMedia('fotoEquipo')->last();
         return $media ? $media->getUrl('thumb') : '';
     }
+
+
+
+
     public function tipo(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(\App\Models\TipoEquipo::class, 'tipo_id');
@@ -72,5 +81,16 @@ class Equipo extends Model implements HasMedia
     public function soporteServicios(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(\App\Models\Servicio::class, 'equipo_id');
+    }
+
+    public function marca(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(\App\Models\EquipoMarca::class, 'marca_id');
+    }
+
+    //getAtributo datos equipo
+    public function getDatosEquipoAttribute()
+    {
+        return $this->tipo->nombre . '/' . $this->marca->nombre . '/' . $this->numero_serie;
     }
 }

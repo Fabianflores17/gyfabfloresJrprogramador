@@ -54,3 +54,17 @@
         <p>Servicios</p>
     </a>
 </li>
+
+<li class="nav-item">
+    <a href="{{ route('servicioEstados.index') }}" class="nav-link {{ Request::is('servicioEstados*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-home"></i>
+        <p>Servicio Estados</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('equipoMarcas.index') }}" class="nav-link {{ Request::is('equipoMarcas*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-home"></i>
+        <p>Equipo Marcas</p>
+    </a>
+</li>

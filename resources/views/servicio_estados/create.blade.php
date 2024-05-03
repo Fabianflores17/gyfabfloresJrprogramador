@@ -1,11 +1,8 @@
 @extends('layouts.app')
 
-@section('titulo_pagina', 'Equipos')
-@section('titulo_pagina', 'Crear Equipo')
+@section('titulo_pagina', 'Crear Servicio Estado')
 
 @section('content')
-
-    @include('layouts.plugins.bootstrap_fileinput')
 
 
     <!-- Content Header (Page header) -->
@@ -13,11 +10,11 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Crear Equipo</h1>
+                    <h1>Crear Servicio Estado</h1>
                 </div>
                 <div class="col ">
                     <a class="btn btn-outline-info float-right"
-                       href="{{ route('equipos.index') }}"
+                       href="{{ route('servicioEstados.index') }}"
                         >
                         <i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;
                         <span class="d-none d-sm-inline">Regresar</span>
@@ -35,15 +32,15 @@
             <div class="card">
                 <div class="card-body">
 
-                    {!! Form::open(['route' => 'equipos.store', "enctype"=>"multipart/form-data",'class' => 'wait-on-submit']) !!}
-                    <div class="form-row" id="root">
+                    {!! Form::open(['route' => 'servicioEstados.store','class' => 'esperar']) !!}
+                    <div class="form-row">
 
-                        @include('equipos.fields')
+                        @include('servicio_estados.fields')
 
                         <!-- Submit Field -->
                         <div class="form-group col-sm-12 mt-2 text-right">
 
-                            <a href="{{ route('equipos.index') }}"
+                            <a href="{{ route('servicioEstados.index') }}"
                                class="btn btn-outline-secondary round me-1 mr-1">
                                 <i class="fa fa-ban"></i>
                                 Cancelar
@@ -64,6 +61,3 @@
 
 
 @endsection
-
-
-

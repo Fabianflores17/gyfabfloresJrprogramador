@@ -71,10 +71,12 @@ Route::group(['prefix' => 'admin','middleware' => ['role:Admin|Superadmin|Develo
 
     Route::resource('permissions', PermissionController::class);
     Route::resource('equipos', EquipoController::class);
-    Route::resource('tipoequipos', TipoEquipoController::class);
     Route::resource('clientes', ClienteController::class);
     Route::resource('servicios', ServicioController::class);
     Route::get('buscador', [ClienteController::class,'buscador'])->name('buscador');
+    Route::resource('servicioEstados', App\Http\Controllers\ServicioEstadoController::class);
+    Route::resource('tipoEquipos', TipoEquipoController::class);
+
 
 });
 
@@ -108,5 +110,8 @@ Route::group(['prefix' => ''], function () {
 
 
 
-Route::resource('tipoEquipos', App\Http\Controllers\TipoEquipoController::class);
-Route::resource('equipos', App\Http\Controllers\EquipoController::class);
+
+//Route::resource('equipos', App\Http\Controllers\EquipoController::class);
+
+
+Route::resource('equipoMarcas', App\Http\Controllers\EquipoMarcaController::class);

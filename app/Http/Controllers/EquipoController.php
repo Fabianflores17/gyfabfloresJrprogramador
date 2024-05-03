@@ -45,6 +45,7 @@ class EquipoController extends AppBaseController
      */
     public function store(CreateEquipoRequest $request)
     {
+
         $input = $request->all();
     $nuevo  = Equipo::all();
         /** @var Equipo $equipo */
@@ -86,6 +87,8 @@ class EquipoController extends AppBaseController
      */
     public function edit($id)
     {
+
+
         /** @var Equipo $equipo */
         $equipo = Equipo::find($id);
 
@@ -103,6 +106,8 @@ class EquipoController extends AppBaseController
      */
     public function update($id, UpdateEquipoRequest $request)
     {
+
+
         /** @var Equipo $equipo */
         $equipo = Equipo::find($id);
 
