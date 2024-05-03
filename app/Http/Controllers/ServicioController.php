@@ -65,6 +65,45 @@ class ServicioController extends AppBaseController
         return redirect(route('servicios.index'));
     }
 
+    public function seguimiento($id)
+    {
+        /** @var Servicio $servicio */
+        $servicio = Servicio::find($id);
+
+        if (empty($servicio)) {
+            flash()->error('Servicio no encontrado');
+
+            return redirect(route('servicios.index'));
+        }
+
+        return view('servicios.seguimiento')->with('servicio', $servicio);
+
+    }
+
+    public function seguimientostore($id, Request $request)
+    {
+        /** @var Servicio $servicio */
+        $servicio = Servicio::find($id);
+
+        if (empty($servicio)) {
+            flash()->error('Servicio no encontrado');
+
+            return redirect(route('servicios.index'));
+        }
+
+        $request->merge([
+            'fecha_inicio' => Carbon::Now(),
+            'estado_id' => ServicioEstado::REPARANDO
+        ]);
+
+
+        $servicio->fill($request->all());
+        $servicio->save();
+        flash()->success('Seguimiento guardado.');
+
+        return redirect(route('servicios.index'));
+    }
+
     /**
      * Display the specified Servicio.
      */

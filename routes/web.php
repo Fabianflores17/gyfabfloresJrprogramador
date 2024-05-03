@@ -73,6 +73,11 @@ Route::group(['prefix' => 'admin','middleware' => ['role:Admin|Superadmin|Develo
     Route::resource('equipos', EquipoController::class);
     Route::resource('clientes', ClienteController::class);
     Route::resource('servicios', ServicioController::class);
+    Route::get('servicios/{servicio}/seguimiento', [ServicioController::class, 'seguimiento'])->name('servicios.seguimiento');
+    //guardar seguimiento
+    Route::patch('servicios/{servicio}/seguimiento', [ServicioController::class, 'seguimientostore'])->name('servicios.seguimientostore');
+
+
     Route::get('buscador', [ClienteController::class,'buscador'])->name('buscador');
     Route::resource('servicioEstados', App\Http\Controllers\ServicioEstadoController::class);
     Route::resource('tipoEquipos', TipoEquipoController::class);

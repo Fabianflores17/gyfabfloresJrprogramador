@@ -39,9 +39,9 @@ class Servicio extends Model
     ];
 
     public static $rules = [
-        'usuario_id' => 'required',
-        'cliente_id' => 'required',
-        'equipo_id' => 'required',
+        'usuario_id' => 'nullable',
+        'cliente_id' => 'nullable',
+        'equipo_id' => 'nullable',
         'problema' => 'nullable|string|max:65535',
         'solucion' => 'nullable|string|max:65535',
         'recomendaciones' => 'nullable|string|max:65535',

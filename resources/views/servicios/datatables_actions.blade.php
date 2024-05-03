@@ -10,6 +10,12 @@
     </a>
 @endcan
 
+@can('seguimiento Servicios')
+    <a href="{{route('servicios.seguimiento',$id)}}" data-toggle="tooltip" title="Seguimiento" class='btn btn-sm btn-outline-success'>
+        <i class="fa fa-arrow-right"></i>
+    </a>
+@endcan
+
 @can('Eliminar Servicios')
     <a href="#" onclick="deleteItemDt(this)" data-id="{{ $id }}" data-toggle="tooltip" title="Eliminar" class='btn btn-sm btn-outline-danger'>
         <i class="fa fa-trash-alt"></i>
