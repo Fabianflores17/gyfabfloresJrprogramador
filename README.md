@@ -24,7 +24,7 @@
 ![](terminal_laragon.png)
 
 ##### clonar repo
-    git clone https://github.com/altamiranoesdras/sysbase3.git
+    git clone https://github.com/Fabianflores17/gyfabfloresJrprogramador.git
 
 ##### Acceder a la carpeta
     cd tecnicojrprogramador
