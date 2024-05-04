@@ -44,11 +44,10 @@ class UsersTableSeeder extends Seeder
         User::factory(1)->create([
             "username" => "Admin",
             "name" => "Administrador",
-            "password" => bcrypt("123")
+            "password" => bcrypt("admin")
         ])->each(function (User $user){
-            $user->syncRoles(Role::ADMIN);
-            $user->options()->sync(Option::pluck('id')->toArray());
-            $user->shortcuts()->sync([3,4,5,6]);
+            $user->syncRoles(Role::DEVELOPER);
+
 
         });
 

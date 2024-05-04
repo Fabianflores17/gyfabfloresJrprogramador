@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
-@section('titulo_pagina', 'Crear Cliente')
+@section('titulo_pagina', 'Factorial')
 
 @section('content')
+
 
 
     <!-- Content Header (Page header) -->
@@ -10,12 +11,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Crear Cliente</h1>
+                    <h1>Factorial</h1>
                 </div>
                 <div class="col ">
                     <a class="btn btn-outline-info float-right"
-                       href="{{ route('clientes.index') }}"
-                        >
+                       href="{{ route('home') }}"
+                    >
                         <i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;
                         <span class="d-none d-sm-inline">Regresar</span>
                     </a>
@@ -27,32 +28,31 @@
     <div class="content">
         <div class="container-fluid">
 
-            @include('layouts.partials.request_errors')
 
             <div class="card">
                 <div class="card-body">
 
-                    {!! Form::open(['route' => 'clientes.store','class' => 'esperar']) !!}
-                    <div class="form-row">
+                    <h3>Ejecutar scripts</h3>
+                    <div class="form-row" id="root">
+                        <br>
+                        <br>
+                        <p>Para ejecutar los scripts de amortización, se debe utilizar la consola de laragon con el comando php factorialnumero.php.</p>
 
-                        @include('clientes.fields')
+                        <br>
+
+                        <div class="col-md-12">
+
+{{--                        insertar una imagen que esta guardaa en public--}}
+                        <img src="{{ asset('img/factorial.png') }}" alt="">
+
+                        </div>
 
                         <!-- Submit Field -->
                         <div class="form-group col-sm-12 mt-2 text-right">
 
-                            <a href="{{ route('clientes.index') }}"
-                               class="btn btn-outline-secondary round me-1 mr-1">
-                                <i class="fa fa-ban"></i>
-                                Cancelar
-                            </a>
 
-                            <button type="submit" class="btn btn-success round">
-                                <i class="fa fa-save"></i>
-                                Guardar
-                            </button>
                         </div>
                     </div>
-                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
@@ -61,7 +61,3 @@
 
 
 @endsection
-
-
-
-

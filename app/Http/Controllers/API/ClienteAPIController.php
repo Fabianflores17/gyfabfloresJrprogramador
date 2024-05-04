@@ -40,6 +40,13 @@ class ClienteAPIController extends AppBaseController
      */
     public function store(CreateClienteAPIRequest $request): JsonResponse
     {
+
+        $existeCliente = Cliente::where('dpi', $request->dpi)->first();
+
+        if($existeCliente){
+            return $this->sendError('Cliente ya existe');
+        }
+
         $input = $request->all();
 
         /** @var Cliente $cliente */
@@ -70,6 +77,8 @@ class ClienteAPIController extends AppBaseController
      */
     public function update($id, UpdateClienteAPIRequest $request): JsonResponse
     {
+
+
         /** @var Cliente $cliente */
         $cliente = Cliente::find($id);
 

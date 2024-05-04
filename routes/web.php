@@ -63,6 +63,13 @@ Route::group(['prefix' => 'admin','middleware' => ['role:Admin|Superadmin|Develo
     Route::get('user/{user}/menu', [UserController::class,'menu'])->name('user.menu');;
     Route::patch('user/menu/{user}', [UserController::class,'menuStore'])->name('users.menuStore');
 
+    //amortizaciones
+    Route::get('user/amortizaciones', [UserController::class,'amortizaciones'])->name('amoritzaciones.vista');
+    //factorial
+    Route::get('user/factorial', [UserController::class,'factorial'])->name('factorial.vista');
+    //entidad relacion
+    Route::get('user/entidad', [UserController::class,'entidad'])->name('entidad.vista');
+
     Route::get('option/create/{option}', [OptionController::class,'create'])->name('option.create');
     Route::get('option/orden', [OptionController::class,'updateOrden'])->name('option.order.store');
     Route::resource('options',OptionController::class);

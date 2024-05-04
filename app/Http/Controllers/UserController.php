@@ -346,4 +346,21 @@ class UserController extends AppBaseController
 
         return true;
     }
+
+
+    public function amortizaciones()
+    {
+        return view('admin.users.amortizaciones');
+
+    }
+
+    public function factorial()
+    {
+        return view('admin.users.factorial');
+    }
+
+    public function entidad()
+    {
+        return view('admin.users.entidad');
+    }
 }

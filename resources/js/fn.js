@@ -228,3 +228,25 @@ $(".wait-on-submit").submit(function( event ) {
 
     Swal.showLoading();
 });
+
+
+window.esperar = (e) =>{
+
+    Swal.fire({
+        title: 'Espera por favor...',
+        allowEscapeKey: false,
+        allowOutsideClick: false,
+        timerProgressBar: true,
+    });
+
+    Swal.showLoading();
+
+}
+
+window.finEspera = (e) =>{
+
+    Swal.close()
+
+}
+
+
