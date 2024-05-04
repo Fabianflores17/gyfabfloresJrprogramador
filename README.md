@@ -29,13 +29,14 @@
 ##### Acceder a la carpeta
     cd tecnicojrprogramador
 
-##### instalar dependencias
-
-    composer install 		
 
 #### crear archivo de entornos
 
     cp .env.example .env   
+
+##### instalar dependencias
+
+    composer install
 
 ##### generar clave de seguridad de la aplicación
     php artisan key:generate  
