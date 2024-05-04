@@ -6,7 +6,7 @@
 
 #### Visual studio code  https://code.visualstudio.com/Download
 
-### Crear una base de datos llamada sysbase
+### Crear una base de datos llamada tecnicodb
 
      (Esto en cualquier administrador de base de datos como heidi)
 
@@ -27,7 +27,7 @@
     git clone https://github.com/altamiranoesdras/sysbase3.git
 
 ##### Acceder a la carpeta
-    cd sysbase3
+    cd tecnicojrprogramador
 
 ##### instalar dependencias
 
@@ -53,10 +53,10 @@
 
 ![](recargar_webserver_laragon.png)
 
-### Puedes ingresar por el navegador con  http://sysbase.local/
+### Puedes ingresar por el navegador con http://tecnicojrprogramador.local/
 
 #### Credenciales de acceso
-    Usuario : dev
+    Usuario : admin
     Password : admin
  
 
